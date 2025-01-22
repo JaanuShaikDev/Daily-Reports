@@ -1,6 +1,6 @@
 pandas==2.1.4
 datetime
 openpyxl==3.1.5
-pyarrow==18.1.0
+Jinja2==3.1.4
 
 -e .
