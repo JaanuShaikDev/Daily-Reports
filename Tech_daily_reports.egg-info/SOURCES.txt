@@ -1,0 +1,11 @@
+setup.py
+Tech_daily_reports.egg-info/PKG-INFO
+Tech_daily_reports.egg-info/SOURCES.txt
+Tech_daily_reports.egg-info/dependency_links.txt
+Tech_daily_reports.egg-info/requires.txt
+Tech_daily_reports.egg-info/top_level.txt
+src/__init__.py
+src/DailyReports/DailyReports.py
+src/DailyReports/__init__.py
+src/DailyReports/logger.py
+src/DailyReports/uitls.py

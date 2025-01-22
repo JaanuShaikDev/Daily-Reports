@@ -1,4 +1,5 @@
 import pandas as pd
+import pyarrow as pa
 from datetime import date, timedelta
 from openpyxl import load_workbook
 from openpyxl.styles import Border, Side
@@ -33,7 +34,8 @@ def PosCash(file_path):
     data = data[data['Closing Balance'] != 0]
     data.sort_values('Posting Date', inplace = True)
     y_day = date.today()-timedelta(days=1)
-    data = data[data['Posting Date'].astype('date32[pyarrow]') < y_day].style.map(
+    data['Posting Date'] = pd.to_datetime(data['Posting Date'], format='%Y-%m-%d', errors='coerce')
+    data[data['Posting Date'] < y_day].style.map(
         lambda x: 'color: red;')
     return data, 'PosCash'
 
@@ -60,7 +62,7 @@ def eMO(file_path):
 def ePost(file_path):
 
     """This function will generate ePost file"""
-    data = pd.read_excel(path, skiprows = 8)
+    data = pd.read_excel(file_path, skiprows = 8)
     cols = ['S.No.', 'ePost Center', 'Retail', 'Prepaid', 'Corporate', 'Total']
     data = data.iloc[:, [2,11,12,13,16]]
     data.rename(columns = {'Unnamed: 1':'S.No.', 'Unnamed: 2':'ePost Center',

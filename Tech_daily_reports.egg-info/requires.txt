@@ -1,0 +1,6 @@
+pandas
+datetime
+openpyxl
+
+[:python_version < "3.12"]
+importlib-metadata
