@@ -21,6 +21,18 @@ def style_border(file_name):
         for cell in row:
             cell.border = border
 
+    for column_cells in ws.columns:
+        max_length = 0
+        column_letter = column_cells[0].column_letter  # Get the column letter (e.g., A, B, C)
+        for cell in column_cells:
+            try:
+                if cell.value:  # Check if the cell has a value
+                    max_length = max(max_length, len(str(cell.value)))
+            except:
+                pass
+        adjusted_width = max_length + 2  # Add some padding
+        ws.column_dimensions[column_letter].width = adjusted_width
+
     wb.save(file_name)
 
 
