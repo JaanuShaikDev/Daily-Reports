@@ -1,6 +1,7 @@
 pandas
 datetime
 openpyxl
+jinja2
 
 [:python_version < "3.12"]
 importlib-metadata

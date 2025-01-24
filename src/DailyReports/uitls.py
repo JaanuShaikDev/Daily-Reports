@@ -47,8 +47,9 @@ def PosCash(file_path):
     data.sort_values('Posting Date', inplace = True)
     y_day = date.today()-timedelta(days=1)
     data['Posting Date'] = data['Posting Date'].apply(lambda x: x.date())
-    data = data[data['Posting Date'] < y_day].style.map(
-        lambda x: 'color: red;')
+    data = data[data['Posting Date'] < y_day]
+    data['Posting Date'] = data['Posting Date'].apply(lambda x: x.strftime('%d-%m-%Y'))
+    data.style.map(lambda x: 'color: red;')
     return data, 'PosCash'
 
 

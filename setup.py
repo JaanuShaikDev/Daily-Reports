@@ -7,7 +7,7 @@ setup(
         'pandas',
         'datetime',
         'openpyxl',
-        'jinja2,'
+        'jinja2',
         'importlib-metadata; python_version < "3.12"'
         ],
     packages = find_packages()

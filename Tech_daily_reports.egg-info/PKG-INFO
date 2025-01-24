@@ -4,4 +4,5 @@ Version: 0.0.1
 Requires-Dist: pandas
 Requires-Dist: datetime
 Requires-Dist: openpyxl
+Requires-Dist: jinja2
 Requires-Dist: importlib-metadata; python_version < "3.12"
