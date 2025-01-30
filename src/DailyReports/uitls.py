@@ -36,9 +36,10 @@ def style_border(file_name):
     wb.save(file_name)
 
 
-def PosCash(file_path):
+def PosCash():
 
     '''This function will process epost file'''
+    file_path =  str(input("Enter file_path: "))
     data = pd.read_excel(file_path)
     cols = ['Profit Center', 'Profit Centre Text',
         'Posting Date', 'Closing Balance']
@@ -50,7 +51,9 @@ def PosCash(file_path):
     data = data[data['Posting Date'] < y_day]
     data['Posting Date'] = data['Posting Date'].apply(lambda x: x.strftime('%d-%m-%Y'))
     data.style.map(lambda x: 'color: red;')
-    return data, 'PosCash'
+    file_name = 'PosCash'
+    file_path = 'Reports'
+    write_file(data, file_path, file_name)
 
 
 def write_file(data, file_path, file_name):
@@ -62,19 +65,23 @@ def write_file(data, file_path, file_name):
     style_border(file_name)
 
 
-def eMO(file_path):
+def eMO():
 
     """This function will generate eMO file"""
+    file_path =  str(input("Enter file_path: "))
     data = pd.read_excel(file_path)
     cols = ['Office Name','Not Printed Unpaid Emos',
         'Printed Unpaid Emos', 'Total Unpaid Emos']
     data = data[cols]
-    return data, 'eMO'
-    
+    #return data, 'eMO'
+    file_name = 'eMO'
+    file_path = 'Reports'
+    write_file(data, file_path, file_name)
 
-def ePost(file_path):
+def ePost():
 
     """This function will generate ePost file"""
+    file_path =  str(input("Enter file_path: "))
     data = pd.read_excel(file_path, skiprows = 8)
     cols = ['S.No.', 'ePost Center', 'Retail', 'Prepaid', 'Corporate', 'Total']
     data = data.iloc[:, [2,11,12,13,16]]
@@ -83,5 +90,8 @@ def ePost(file_path):
                         'Total.1': 'Total'}, inplace = True)
     data = data[data.Total>0]
     data.iloc[-1,0] = 'Total'
-    return data, 'ePost'
+    #return data, 'ePost'
+    file_name = 'ePost'
+    file_path = 'Reports'
+    write_file(data, file_path, file_name)
     
